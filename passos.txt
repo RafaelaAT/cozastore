@@ -1,0 +1,11 @@
+-------------------------///--------------------------
+Configurando o Git
+
+git config --global user.name "NOME"
+
+git config --global user.email emailemail@gmail.com
+
+-------------------------///--------------------------
+Criar o Projeto
+
+dotnet new mvc -o Cozastore
