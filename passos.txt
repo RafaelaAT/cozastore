@@ -9,3 +9,8 @@ git config --global user.email emailemail@gmail.com
 Criar o Projeto
 
 dotnet new mvc -o Cozastore
+
+-------------------------///--------------------------
+ANOTAÇÕES
+
+Model - classe que representa um dado que você quer configurar
