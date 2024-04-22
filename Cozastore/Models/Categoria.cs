@@ -17,7 +17,7 @@ public class Categoria
     [StringLength(300)]
     public string Foto { get; set; }
 
-    [Display(Name = "Exibir como FIltro?")]
+    [Display(Name = "Exibir como Filtro?")]
     public bool Filtrar { get; set; } = false;
 
     [Display(Name = "Exibir como Banner?")]
@@ -29,5 +29,4 @@ public class Categoria
     public Categoria CategoriaPai { get; set; }
 
     public ICollection<Produto> Produtos { get; set; }
-
 }

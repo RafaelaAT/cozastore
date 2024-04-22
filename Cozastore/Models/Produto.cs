@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Razor.Hosting;
 
 namespace Cozastore.Models;
 
@@ -19,16 +20,16 @@ public class Produto
     public string DescricaoResumida { get; set; }
 
     [Display(Name = "Descrição Completa")]
-    [StringLength(8000, ErrorMessage = "A Descrição Completa deve possuir no máximo 1000 caracteres")]
+    [StringLength(8000, ErrorMessage = "A Descrição Completa deve possuir no máximo 8000 caracteres")]
     public string DescricaoCompleta { get; set; }
 
     [Display(Name = "SKU")]
     [StringLength(10, ErrorMessage = "O SKU deve possuir no máximo 10 caracteres")]
     public string SKU { get; set; }
 
-    [Display(Name = "Preço")]
+    [Display(Name = "Preço de Venda")]
     [Column(TypeName = "decimal(12,2)")] // 9.999.999.999,99
-    [Required(ErrorMessage = "Por favor, informe o Preço da venda")]
+    [Required(ErrorMessage = "Por favor, informe o Preço de Venda")]
     public decimal Preco { get; set; }
 
     [Display(Name = "Preço com Desconto")]
@@ -47,16 +48,14 @@ public class Produto
 
     [Display(Name = "Dimensões")]
     [StringLength(20, ErrorMessage = "As Dimensões devem possuir no máximo 20 caracteres")]
-    public string  Dimensao { get; set; }
+    public string Dimensao { get; set; }
 
     [Display(Name = "Categoria")]
     [Required(ErrorMessage = "Por favor, informe a categoria")]
-    public int CategoriaID { get; set; }
+    public int CategoriaId { get; set; }
     [ForeignKey("CategoriaId")]
-
     public Categoria Categoria { get; set; }
 
     public ICollection<Estoque> Estoque { get; set; }
-
     public ICollection<ProdutoFoto> Fotos { get; set; }
 }

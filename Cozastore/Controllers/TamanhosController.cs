@@ -22,7 +22,7 @@ namespace Cozastore.Controllers
         // GET: Tamanhos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Cores.ToListAsync());
+            return View(await _context.Tamanhos.ToListAsync());
         }
 
         // GET: Tamanhos/Details/5
@@ -33,14 +33,14 @@ namespace Cozastore.Controllers
                 return NotFound();
             }
 
-            var cor = await _context.Cores
+            var tamanho = await _context.Tamanhos
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (cor == null)
+            if (tamanho == null)
             {
                 return NotFound();
             }
 
-            return View(cor);
+            return View(tamanho);
         }
 
         // GET: Tamanhos/Create
@@ -54,15 +54,15 @@ namespace Cozastore.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,CodigoHexa")] Cor cor)
+        public async Task<IActionResult> Create([Bind("Id,Sigla,Nome")] Tamanho tamanho)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(cor);
+                _context.Add(tamanho);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(cor);
+            return View(tamanho);
         }
 
         // GET: Tamanhos/Edit/5
@@ -73,12 +73,12 @@ namespace Cozastore.Controllers
                 return NotFound();
             }
 
-            var cor = await _context.Cores.FindAsync(id);
-            if (cor == null)
+            var tamanho = await _context.Tamanhos.FindAsync(id);
+            if (tamanho == null)
             {
                 return NotFound();
             }
-            return View(cor);
+            return View(tamanho);
         }
 
         // POST: Tamanhos/Edit/5
@@ -86,9 +86,9 @@ namespace Cozastore.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,CodigoHexa")] Cor cor)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Sigla,Nome")] Tamanho tamanho)
         {
-            if (id != cor.Id)
+            if (id != tamanho.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace Cozastore.Controllers
             {
                 try
                 {
-                    _context.Update(cor);
+                    _context.Update(tamanho);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CorExists(cor.Id))
+                    if (!TamanhoExists(tamanho.Id))
                     {
                         return NotFound();
                     }
@@ -113,7 +113,7 @@ namespace Cozastore.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(cor);
+            return View(tamanho);
         }
 
         // GET: Tamanhos/Delete/5
@@ -124,14 +124,14 @@ namespace Cozastore.Controllers
                 return NotFound();
             }
 
-            var cor = await _context.Cores
+            var tamanho = await _context.Tamanhos
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (cor == null)
+            if (tamanho == null)
             {
                 return NotFound();
             }
 
-            return View(cor);
+            return View(tamanho);
         }
 
         // POST: Tamanhos/Delete/5
@@ -139,19 +139,19 @@ namespace Cozastore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var cor = await _context.Cores.FindAsync(id);
-            if (cor != null)
+            var tamanho = await _context.Tamanhos.FindAsync(id);
+            if (tamanho != null)
             {
-                _context.Cores.Remove(cor);
+                _context.Tamanhos.Remove(tamanho);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CorExists(int id)
+        private bool TamanhoExists(int id)
         {
-            return _context.Cores.Any(e => e.Id == id);
+            return _context.Tamanhos.Any(e => e.Id == id);
         }
     }
 }

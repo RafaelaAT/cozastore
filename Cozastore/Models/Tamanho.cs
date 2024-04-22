@@ -11,7 +11,7 @@ public class Tamanho
     public int Id { get; set; }
 
     [Required(ErrorMessage = "Por favor, informe a Sigla")]
-    [StringLength(5, ErrorMessage = "A Sigla deve ter no máximo 5 caracteres")]
+    [StringLength(5, ErrorMessage = "A Sigla deve possuir no máximo 5 caracteres")]
     public string Sigla { get; set; }
 
     [Required(ErrorMessage = "Por favor, informe o Nome")]

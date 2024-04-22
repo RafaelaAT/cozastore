@@ -19,9 +19,9 @@ public class Estoque
     [Display(Name = "Tamanho")]
     [Required(ErrorMessage = "Por favor, informe o Tamanho")]
     public int TamanhoId { get; set; }
-    [ForeignKey("TamanhoId")]
+    [ForeignKey("TamanhoID")]
     public Tamanho Tamanho { get; set; }
-    
+
     [Display(Name = "Cor")]
     [Required(ErrorMessage = "Por favor, informe a Cor")]
     public int CorId { get; set; }
@@ -34,9 +34,9 @@ public class Estoque
 
     [Display(Name = "Preço com Desconto")]
     [Column(TypeName = "decimal(2,2)")] // 999.999,99
-    public decimal PrecoDesconto { get; set; }
+    public decimal? PrecoDesconto { get; set; }
 
-    [Display(Name = "Qtde de Estoque")]
+    [Display(Name = "Qtde em Estoque")]
     [Required(ErrorMessage = "Por favor, informe a Qtde em Estoque")]
     public int QtdeEstoque { get; set; }
 }

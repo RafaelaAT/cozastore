@@ -22,5 +22,4 @@ public class ProdutoFoto
 
     [Display(Name = "Foto Destaque?")]
     public bool Destaque { get; set; }
-    
 }
